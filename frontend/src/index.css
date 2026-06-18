@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body {
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(14,165,233,0.10), transparent 45%),
+      radial-gradient(circle at 85% 90%, rgba(56,189,248,0.08), transparent 50%),
+      linear-gradient(180deg, #070A12 0%, #0B0F19 100%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3 { font-family: theme('fontFamily.display'); letter-spacing: 0.04em; }
+  ::selection { background: rgba(56,189,248,0.35); color: #fff; }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-abyss-900/60 backdrop-blur-xl border border-arc-500/15 rounded-xl;
+  }
+  .glass-panel-strong {
+    @apply bg-abyss-900/80 backdrop-blur-2xl border border-arc-500/25 rounded-xl shadow-glow;
+  }
+  .input-arc {
+    @apply w-full bg-abyss-800/70 border border-arc-500/20 rounded-md px-3 py-2 text-slate-100
+           placeholder:text-slate-500 focus:outline-none focus:border-arc-500 focus:shadow-glow
+           transition-all duration-200;
+  }
+  .btn-arc {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md font-semibold uppercase tracking-wider text-sm
+           bg-gradient-to-r from-arc-600 to-arc-500 text-abyss-950
+           hover:from-arc-500 hover:to-arc-400 hover:shadow-glow-lg
+           active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md font-semibold uppercase tracking-wider text-sm
+           bg-transparent border border-arc-500/30 text-arc-400
+           hover:border-arc-500 hover:text-arc-300 hover:shadow-glow
+           transition-all duration-200 disabled:opacity-50;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md font-semibold uppercase tracking-wider text-sm
+           bg-transparent border border-rose-500/40 text-rose-300
+           hover:bg-rose-500/10 hover:border-rose-400 transition-all duration-200;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs uppercase tracking-wider
+           bg-arc-500/10 border border-arc-500/30 text-arc-300;
+  }
+  .scan-line::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: inherit;
+    background: linear-gradient(180deg, transparent 0%, rgba(56,189,248,0.08) 50%, transparent 100%);
+    animation: scan 3s linear infinite;
+  }
+}
